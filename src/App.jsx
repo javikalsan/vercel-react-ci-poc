@@ -20,6 +20,7 @@ function App() {
           <img src="https://wallpapercave.com/wp/GOeIy6n.jpg" className="logo react" alt="totoro" />
         </a>
 
+        poc
       </div>
       <h1>vercel react ci poc</h1>
     </>

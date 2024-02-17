@@ -7,10 +7,30 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: amondnet/vercel-action@v19
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v19
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}  # Required
           vercel-args: '--prod'  # Optional
-          vercel-org-id: ${{ secrets.ORG_ID}}  # Required
-          vercel-project-id: ${{ secrets.PROJECT_ID}}  # Required 
+          vercel-org-id: ${{ secrets.ORG_ID }}  # Required
+          vercel-project-id: ${{ secrets.PROJECT_ID }}  # Required
+
+      - name: Get branch name
+        id: branch_name
+        run: echo "::set-output name=branch_name::${GITHUB_REF#refs/heads/}"
+
+      - name: Get Vercel URL
+        id: vercel_url
+        run: echo "::set-output name=vercel_url::$(vercel --json | jq -r '.url')"
+
+      - name: Send to Google Chat
+        uses: google-github-actions/send-chat-message@main
+        with:
+          chat-url: ${{ secrets.GOOGLE_CHAT_WEBHOOK }}
+          message: |
+            Branch: ${{ steps.branch_name.outputs.branch_name }}
+            Vercel URL: ${{ steps.vercel_url.outputs.vercel_url }}
+
