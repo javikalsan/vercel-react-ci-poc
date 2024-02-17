@@ -20,7 +20,7 @@ jobs:
 
       - name: Get commit url
         id: commit_url
-        run: echo "https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
+        run: echo "::set-output name=commit_url::https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
 
       - name: Get branch name
         id: branch_name
