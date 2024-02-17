@@ -22,7 +22,8 @@ function App() {
 
       </div>
       <h1>vercel react ci p_0_c </h1>
-      first commit
+      first commit <br />
+      second commit
     </>
   )
 }
