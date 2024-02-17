@@ -21,7 +21,7 @@ function App() {
         </a>
 
       </div>
-      <h1>vercel react ci poc</h1>
+      <h1>vercel react ci p_0_c </h1>
     </>
   )
 }
