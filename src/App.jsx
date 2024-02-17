@@ -15,6 +15,11 @@ function App() {
         <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
+
+        <a href="https://wallpapercave.com/wp/GOeIy6n.jpg" target="_blank">
+          <img src="https://wallpapercave.com/wp/GOeIy6n.jpg" className="logo react" alt="totoro" />
+        </a>
+
       </div>
       <h1>vercel react ci poc</h1>
     </>
