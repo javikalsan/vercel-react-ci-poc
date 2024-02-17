@@ -30,7 +30,7 @@ jobs:
         uses: julb/action-post-googlechat-message@v1
         with:
           gchat_webhook_url: ${{ secrets.GOOGLE_CHAT_WEBHOOK }}
-           message: |
+          message: |
             Branch: ${{ steps.branch_name.outputs.branch_name }}
             Vercel URL: ${{ steps.vercel_url.outputs.vercel_url }}
 
