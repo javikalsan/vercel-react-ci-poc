@@ -27,10 +27,10 @@ jobs:
         run: echo "::set-output name=vercel_url::$(vercel --json | jq -r '.url')"
 
       - name: Send to Google Chat
-        uses: google-github-actions/send-chat-message@main
+        uses: julb/action-post-googlechat-message@v1
         with:
-          chat-url: ${{ secrets.GOOGLE_CHAT_WEBHOOK }}
-          message: |
+          gchat_webhook_url: ${{ secrets.GOOGLE_CHAT_WEBHOOK }}
+           message: |
             Branch: ${{ steps.branch_name.outputs.branch_name }}
             Vercel URL: ${{ steps.vercel_url.outputs.vercel_url }}
 
