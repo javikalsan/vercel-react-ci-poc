@@ -18,6 +18,10 @@ jobs:
           vercel-org-id: ${{ secrets.ORG_ID }}  # Required
           vercel-project-id: ${{ secrets.PROJECT_ID }}  # Required
 
+      - name: Get commit url
+        id: commit_url
+        run: echo "Commit URL: https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
+
       - name: Get branch name
         id: branch_name
         run: echo "::set-output name=branch_name::${GITHUB_REF#refs/heads/}"
@@ -32,5 +36,5 @@ jobs:
           gchat_webhook_url: ${{ secrets.GOOGLE_CHAT_WEBHOOK }}
           message: |
             Branch: ${{ steps.branch_name.outputs.branch_name }}
+            Commit: ${{ steps.commit_url.outputs.commit_url }}
             Vercel URL: ${{ steps.vercel_url.outputs.vercel_url }}
-
