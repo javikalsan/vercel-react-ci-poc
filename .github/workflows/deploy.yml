@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      
+
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v19
         with:
@@ -24,7 +24,7 @@ jobs:
 
       - name: Get Vercel URL
         id: vercel_url
-        run: echo "::set-output name=vercel_url::$(vercel --json | jq -r '.url')"
+        run: echo "::set-output name=vercel_url::$(vercel list | grep https | head -1)"
 
       - name: Send to Google Chat
         uses: julb/action-post-googlechat-message@v1
